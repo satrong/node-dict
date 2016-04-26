@@ -1,0 +1,19 @@
+{
+	"name": "dict",
+	"version": "1.0.0",
+	"description": "cmd dict",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"dict"
+	],
+	"dependencies": {
+		"cheerio": "~0.20.0",
+		"request": "~2.72.0",
+		"bash-color": "^0.0.3"
+	},
+	"author": "satrong",
+	"license": "ISC"
+}
