@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+require('/home/satrong/web/dev/github/node-dict/index.js');
+        
