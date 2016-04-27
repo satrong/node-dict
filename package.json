@@ -15,5 +15,12 @@
 		"bash-color": "^0.0.3"
 	},
 	"author": "satrong",
+	"bugs": {
+		"url": "https://github.com/satrong/node-dict/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:satrong/node-dict.git"
+	},
 	"license": "ISC"
 }
