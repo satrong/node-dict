@@ -1,13 +1,14 @@
-var cp = require("child_process");
-var path = require("path");
-var fs = require("fs");
-var color = require('bash-color');
+"use strict";
+const cp = require("child_process");
+const path = require("path");
+const fs = require("fs");
+const color = require('bash-color');
 var npmRoot = cp.execSync("npm -g root", {
     encoding: 'utf8'
 });
 var isWin = /win/i.test(process.platform);
 
-fs.writeFile(path.join(npmRoot, '../dict' + (isWin ? '.cmd' : '')), fileContent(__dirname), function(err) {
+fs.writeFile(path.join(npmRoot, '../dict' + (isWin ? '.cmd' : '')), fileContent(__dirname), (err) => {
     if (err) throw err;
     console.log("dict 已成为全局命令，您现在可以执行命令：");
     console.log(color.green("  dict hello"));
