@@ -9,5 +9,5 @@
 2. 输入`dict hello`
 
 # 已通过测试环境
-- windows 10 x64
-- ubuntu 16.04 x64
+- Windows 10 x64
+- Ubuntu 16.04 x64
