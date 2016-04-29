@@ -7,3 +7,7 @@
 # 使用方法
 1. 打开cmd/shell；
 2. 输入`dict hello`
+
+# 已通过测试环境
+- Windows 10 x64
+- Ubuntu 16.04 x64
