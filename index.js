@@ -2,19 +2,12 @@ var request = require("request");
 var cheerio = require("cheerio");
 var color = require('bash-color');
 var out = process.stdout;
-
-var dotCount = 0;
-var word = Array.prototype.slice.call(process.argv, 2).join(' ');
-var search = function(w) {
-    return 'http://cn.bing.com/dict/search?q=' + encodeURI(w);
-};
-
-
-
+var word = encodeURI(Array.prototype.slice.call(process.argv, 2).join(' '));
 
 var dictList = ["bing"]; /// 对应lib文件夹的文件名
-(function() {
-    var option = require('./lib/' + dictList[0]);
+(function crawl(i) {
+    var dotCount = 0;
+    var option = require('./lib/' + dictList[i]);
     var f = setInterval(function() {
         ++dotCount;
         out.clearLine();
@@ -25,56 +18,25 @@ var dictList = ["bing"]; /// 对应lib文件夹的文件名
         url: option.url(word),
         headers: option.headers || {}
     }, function(error, response, body) {
-		clearInterval(f);
-		if (!error && response.statusCode == 200) {
-			var $ = cheerio.load(body);
-			var data = option.action($);
-
-
-			var headword = $("#headword");
-			out.clearLine();
-			out.cursorTo(0);
-			if (headword.length === 0) {
-				return console.log(color.cyan('抱歉，没有查询到'));
-			}
-			console.log(color.wrap(headword.text(), color.colors.BLUE, color.styles.hi_background));
-			headword.parent().next().children().each(function() {
-				var type = color.wrap($(this).children().eq(0).text(), color.colors.YELLOW, color.styles.background);
-				var explanation = $(this).children().eq(1).text();
-				console.log(type, explanation);
-			});
-		} else {
-			console.log(color.red('查询失败', true));
-		}
-    });
-})();
-
-
-
-
-request({
-    url: search(word),
-    headers: {
-        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4',
-        'Referer': 'http://cn.bing.com/dict/'
-    }
-}, function(error, response, body) {
-    clearInterval(f);
-    if (!error && response.statusCode == 200) {
-        var $ = cheerio.load(body);
-        var headword = $("#headword");
-        out.clearLine();
-        out.cursorTo(0);
-        if (headword.length === 0) {
-            return console.log(color.cyan('抱歉，没有查询到'));
+        clearInterval(f);
+        if (!error && response.statusCode == 200) {
+            out.clearLine();
+            out.cursorTo(0);
+            var $ = cheerio.load(body);
+            var data = option.action($);
+            if (typeof data === 'string') {
+                i < dictList.length - 1 ? crawl(++i) : console.log(color.cyan(data));
+            } else {
+                data.map(function(item, index) {
+                    if (index === 0) {
+                        console.log(color.wrap(item, color.colors.BLUE, color.styles.hi_background));
+                    } else {
+                        console.log(color.wrap(item[0], color.colors.YELLOW, color.styles.background), item[1]);
+                    }
+                });
+            }
+        } else {
+            i < dictList.length - 1 ? crawl(++i) : console.log(color.red('查询失败', true));
         }
-        console.log(color.wrap(headword.text(), color.colors.BLUE, color.styles.hi_background));
-        headword.parent().next().children().each(function() {
-            var type = color.wrap($(this).children().eq(0).text(), color.colors.YELLOW, color.styles.background);
-            var explanation = $(this).children().eq(1).text();
-            console.log(type, explanation);
-        });
-    } else {
-        console.log(color.red('查询失败', true));
-    }
-});
+    });
+})(0);
