@@ -1,6 +1,6 @@
 {
 	"name" : "node-dict",
-	"version" : "1.0.3",
+	"version" : "1.1.0",
 	"description" : "cmd dict",
 	"bin" : {
 		"dict" : "./bin/dict"
