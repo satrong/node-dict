@@ -23,9 +23,9 @@ var dictList = ["bing", "youdao"]; /// 对应lib文件夹的文件名
 		timeout: 5000
 	}, function(error, response, body) {
 		clearInterval(f);
+		out.clearLine();
+		out.cursorTo(0);
 		if (!error && response.statusCode == 200) {
-			out.clearLine();
-			out.cursorTo(0);
 			var $ = cheerio.load(body);
 			var data = option.action($);
 			if (typeof data === 'string') {
