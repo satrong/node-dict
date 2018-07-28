@@ -1,33 +1,33 @@
 {
-	"name" : "node-dict",
-	"version" : "1.1.6",
-	"description" : "cmd dict",
-	"bin" : {
-		"dict" : "./bin/dict"
+	"name": "node-dict",
+	"version": "2.0.0",
+	"description": "terminal dict",
+	"bin": {
+		"dict": "./bin/dict"
 	},
-	"main" : "index.js",
-	"scripts" : {
-		"test" : "echo \"Error: no test specified\" && exit 1"
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords" : [
+	"keywords": [
 		"dict",
 		"node dict"
 	],
-	"dependencies" : {
-		"cheerio" : "~0.20.0",
-		"request" : "~2.72.0",
-		"bash-color" : "^0.0.3"
+	"dependencies": {
+		"cheerio": "~1.0.0-rc.2",
+		"ora": "^3.0.0",
+		"request": "~2.87.0"
 	},
-	"author" : "satrong",
-	"bugs" : {
-		"url" : "https://github.com/satrong/node-dict/issues"
+	"author": "satrong",
+	"bugs": {
+		"url": "https://github.com/satrong/node-dict/issues"
 	},
-	"repository" : {
-		"type" : "git",
-		"url" : "git@github.com:satrong/node-dict.git"
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:satrong/node-dict.git"
 	},
-	"engines" : {
-		"node" : ">= 4.0.x"
+	"engines": {
+		"node": ">= 8.0.0"
 	},
-	"license" : "ISC"
+	"license": "ISC"
 }
