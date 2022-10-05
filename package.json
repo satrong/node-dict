@@ -16,7 +16,7 @@
 	"dependencies": {
 		"cheerio": "~1.0.0-rc.2",
 		"ora": "^3.0.0",
-		"request": "~2.87.0"
+		"request": "~2.88.2"
 	},
 	"author": "satrong",
 	"bugs": {
