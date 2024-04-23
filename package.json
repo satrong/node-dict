@@ -1,22 +1,33 @@
 {
 	"name": "node-dict",
-	"version": "2.0.1",
-	"description": "terminal dict",
+	"version": "3.0.0",
+	"description": "Easy to translate in the terminal",
+	"type": "module",
 	"bin": {
-		"dict": "./bin/dict"
+		"dict": "./bin/dict.mjs"
 	},
-	"main": "index.js",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"main": "dist/index.js",
+	"packageManager": "pnpm@8.10.5",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "tsx test/index.test.ts",
+		"build": "tsup",
+		"dev": "NODE_ENV=development tsx src/cli.ts"
 	},
 	"keywords": [
 		"dict",
-		"node dict"
+		"terminal dict",
+		"translate"
 	],
 	"dependencies": {
-		"cheerio": "~1.0.0-rc.2",
-		"ora": "^3.0.0",
-		"request": "~2.87.0"
+		"axios": "^1.6.8",
+		"ora": "^8.0.1"
 	},
 	"author": "satrong",
 	"bugs": {
@@ -27,7 +38,17 @@
 		"url": "git@github.com:satrong/node-dict.git"
 	},
 	"engines": {
-		"node": ">= 8.0.0"
+		"node": ">= 16.0.0"
 	},
-	"license": "ISC"
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.12.7",
+		"tsup": "^8.0.2",
+		"tsx": "^4.7.2",
+		"typescript": "^5.4.5"
+	},
+	"files": [
+		"dist",
+		"bin"
+	]
 }
