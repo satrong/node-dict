@@ -2,19 +2,21 @@
 
 > Nodejs >= 16.0.0 required.
 
-## Install
+### CLI Usage
+
+#### Install
 
 ```bash
 npm install node-dict -g
 ```
 
-## Usage
+#### Usage
 
 ```bash
 dict [word]
 ```
 
-## Example
+#### Example
 
 ```bash
 $ dict hello
@@ -27,7 +29,7 @@ Output:
 美[heˈləʊ]，英[həˈləʊ]，int. 你好；喂；您好；哈喽； 网络释义： 哈罗；哈啰；大家好；
 ```
 
-## Options
+#### Options
 
 ```
 Usage: dict <word>
@@ -41,9 +43,13 @@ Usage: dict <word>
 
 ## API Usage
 
+#### Install
+
 ```
 npm i node-dict
 ```
+
+#### Usage
 
 ```js
 import { nodeDict } from 'node-dict'
